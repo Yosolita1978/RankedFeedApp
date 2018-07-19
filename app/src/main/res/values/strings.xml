@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ranked</string>
+
+    <string name="section_name">Section Name</string>
+    <string name="news_title">News Title. Long placeholder location that should wrap to more than 2 lines of text</string>
+    <string name="news_date">News date</string>
+</resources>

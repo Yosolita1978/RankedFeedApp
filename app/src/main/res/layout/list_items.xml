@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_layout"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/news_image"
+        android:layout_width="@dimen/list_layout"
+        android:layout_height="@dimen/list_layout"
+        android:scaleType="center"
+        tools:src="@drawable/defaultranked" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_layout"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/section_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingLeft="@dimen/dimen_8dp"
+            android:paddingRight="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:textColor="@color/textAccent"
+            android:textSize="@dimen/font_small"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="@string/section_name" />
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingLeft="@dimen/dimen_8dp"
+            android:paddingRight="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:textColor="@color/colorAccentLight"
+            android:textSize="@dimen/font_medium"
+            android:textAppearance="?android:textAppearanceMedium"
+            tools:text="@string/news_title" />
+
+        <TextView
+            android:id="@+id/news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingLeft="@dimen/dimen_8dp"
+            android:paddingRight="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:textColor="@color/textOnPrimary"
+            android:textSize="@dimen/font_small"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="@string/news_date" />
+
+    </LinearLayout>
+
+</LinearLayout>
