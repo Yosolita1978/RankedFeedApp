@@ -6,12 +6,15 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,30 +53,16 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         dateTextView.setText(currentArticle.getPublishedDate());
 
         // Find the ImageView in the list_item.xml layout with the ID image.
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.news_image);
-        imageView.setImageDrawable(getSectionImage(articleSection));
+        ImageView articleImageView = listItemView.findViewById(R.id.news_image);
+        String imageUrl = currentArticle.getImageUrl();
+
+        if (imageUrl != null) {
+            Picasso.get().load(imageUrl).into(articleImageView);
+        } else {
+            articleImageView.setImageResource(R.drawable.defaultranked);
+        }
 
         return listItemView;
     }
 
-    // Helper method to find the image resource according to the article section
-
-    private Drawable getSectionImage(String section) {
-        int imageSectionResourceId;
-        switch (section) {
-            case "Film":
-                imageSectionResourceId = R.drawable.rankedone;
-                break;
-            case "Music":
-                imageSectionResourceId = R.drawable.rankedtwo;
-                break;
-            case "Culture":
-                imageSectionResourceId = R.drawable.rankedthree;
-                break;
-            default:
-                imageSectionResourceId = R.drawable.defaultranked;
-                break;
-        }
-        return ContextCompat.getDrawable(getContext(), imageSectionResourceId);
-    }
 }

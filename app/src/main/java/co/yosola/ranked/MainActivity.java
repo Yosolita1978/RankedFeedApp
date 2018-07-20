@@ -21,7 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
     private static final String apiKey = BuildConfig.ApiKey;
-    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?page-size=20&api-key=" + apiKey;
+    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?&show-fields=thumbnail&page-size=20&api-key=" + apiKey;
     private static final int ARTICLE_LOADER_ID = 1;
 
     /** Adapter for the list of ranked articles */

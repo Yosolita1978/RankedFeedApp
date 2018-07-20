@@ -131,13 +131,15 @@ public final class QueryUtils {
                 String section = article.optString("sectionName");
                 String url = article.optString("webUrl");
                 String publicationDate = article.getString("webPublicationDate");
+                JSONObject fields = article.optJSONObject("fields");;
+                String imageUrl = fields.getString("thumbnail");
 
-                // Create a new {@link Article} object with the title, url, publicationDate and section
-                // from the JSON response.
-                articles.add(new Article(title, url, publicationDate, section));
+                // Create a new {@link Article} object with the title, url, publicationDate, section
+                // and imageUrl from the JSON response.
+                articles.add(new Article(title, url, publicationDate, section, imageUrl));
 
                 //log msg just for checking
-                Log.d(LOG_TAG, articles.get(i).toString());
+//                Log.d(LOG_TAG, articles.get(i).toString());
             }
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
@@ -164,10 +166,7 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Article}s
-        List<Article> rankedArticles = extractFeatureFromJson(jsonResponse);
-
         // Return the list of {@link Article}s
-        return rankedArticles;
+        return extractFeatureFromJson(jsonResponse);
     }
 }
