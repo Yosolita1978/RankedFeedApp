@@ -1,12 +1,8 @@
 package co.yosola.ranked;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +12,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by cristina on 7/19/18.
@@ -50,7 +51,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         titleTextView.setText(currentArticle.getTitle());
 
         TextView dateTextView = listItemView.findViewById(R.id.news_date);
-        dateTextView.setText(currentArticle.getPublishedDate());
+        String dateWithoutFormat = currentArticle.getPublishedDate();
+        Date date = fromISO8601UTC(dateWithoutFormat);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy", Locale.US);
+        String dateStr = dateFormat.format(date);
+        dateTextView.setText(dateStr);
 
         // Find the ImageView in the list_item.xml layout with the ID image.
         ImageView articleImageView = listItemView.findViewById(R.id.news_image);
@@ -64,5 +69,20 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         return listItemView;
     }
+
+    //    Helper method to format the Date String
+    private Date fromISO8601UTC(String dateStr) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        df.setTimeZone(tz);
+
+        try {
+            return df.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }
