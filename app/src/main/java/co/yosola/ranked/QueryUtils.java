@@ -131,7 +131,8 @@ public final class QueryUtils {
                 String section = article.optString("sectionName");
                 String url = article.optString("webUrl");
                 String publicationDate = article.getString("webPublicationDate");
-                JSONObject fields = article.optJSONObject("fields");;
+                JSONObject fields = article.optJSONObject("fields");
+                ;
                 String imageUrl = fields.getString("thumbnail");
 
                 // Create a new {@link Article} object with the title, url, publicationDate, section
@@ -147,7 +148,7 @@ public final class QueryUtils {
             // with the message from the exception.
             Log.e(LOG_TAG, "Problem parsing the articles JSON results", e);
         }
-        // Return the list of earthquakes
+        // Return the list of articles
         return articles;
     }
 

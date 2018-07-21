@@ -1,20 +1,22 @@
 package co.yosola.ranked;
 
-import android.content.Context;
 import android.content.AsyncTaskLoader;
+import android.content.Context;
 
 import java.util.List;
 
 public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
-    /** Query URL */
+    /**
+     * Query URL
+     */
     private String url;
 
     /**
      * Constructs a new {@link ArticleLoader}.
      *
      * @param context of the activity
-     * @param url to load data from
+     * @param url     to load data from
      */
     public ArticleLoader(Context context, String url) {
         super(context);

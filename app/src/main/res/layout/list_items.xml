@@ -29,10 +29,10 @@
             android:paddingLeft="@dimen/dimen_8dp"
             android:paddingRight="@dimen/dimen_8dp"
             android:paddingStart="@dimen/dimen_8dp"
+            android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/textAccent"
             android:textSize="@dimen/font_small"
             android:textStyle="bold"
-            android:textAppearance="?android:textAppearanceSmall"
             tools:text="@string/section_name" />
 
         <TextView
@@ -46,9 +46,9 @@
             android:paddingLeft="@dimen/dimen_8dp"
             android:paddingRight="@dimen/dimen_8dp"
             android:paddingStart="@dimen/dimen_8dp"
+            android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/colorAccentLight"
             android:textSize="@dimen/font_medium"
-            android:textAppearance="?android:textAppearanceMedium"
             tools:text="@string/news_title" />
 
         <TextView
@@ -60,9 +60,9 @@
             android:paddingLeft="@dimen/dimen_8dp"
             android:paddingRight="@dimen/dimen_8dp"
             android:paddingStart="@dimen/dimen_8dp"
+            android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/textOnPrimary"
             android:textSize="@dimen/font_small"
-            android:textAppearance="?android:textAppearanceSmall"
             tools:text="@string/news_date" />
 
     </LinearLayout>

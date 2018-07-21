@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,6 +48,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         TextView titleTextView = listItemView.findViewById(R.id.news_title);
         titleTextView.setText(currentArticle.getTitle());
 
+//        Setting the date with Format. I preffer only the month and the year of publication
         TextView dateTextView = listItemView.findViewById(R.id.news_date);
         String dateWithoutFormat = currentArticle.getPublishedDate();
         Date date = fromISO8601UTC(dateWithoutFormat);

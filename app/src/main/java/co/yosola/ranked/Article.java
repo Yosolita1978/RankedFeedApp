@@ -25,11 +25,11 @@ public class Article {
         return mUrl;
     }
 
-    public String getPublishedDate(){
+    public String getPublishedDate() {
         return mPublishedDate;
     }
 
-    public String getSection(){
+    public String getSection() {
         return mSection;
     }
 

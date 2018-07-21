@@ -19,7 +19,7 @@
     <dimen name="dimen_64dp">64dp</dimen>
 
     <!-- Font Sizes -->
-    <dimen name="font_small">13sp</dimen>
+    <dimen name="font_small">12sp</dimen>
     <dimen name="font_medium">16sp</dimen>
     <dimen name="font_large">20sp</dimen>
     <dimen name="font_description">18sp</dimen>

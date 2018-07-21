@@ -1,18 +1,17 @@
 package co.yosola.ranked;
 
-import android.content.Context;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,14 +19,23 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
+    // A method to storage my api key private. See the build.gradle for more details.
     private static final String apiKey = BuildConfig.ApiKey;
+
+    // The static url of my HTTP request to The Guardian
     private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?&show-fields=thumbnail&page-size=20&api-key=" + apiKey;
+
+    // The id of the Loader
     private static final int ARTICLE_LOADER_ID = 1;
 
-    /** Adapter for the list of ranked articles */
+    /**
+     * Adapter for the list of ranked articles
+     */
     private ArticleAdapter mAdapter;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     @Override
