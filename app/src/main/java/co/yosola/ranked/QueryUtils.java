@@ -132,12 +132,17 @@ public final class QueryUtils {
                 String url = article.optString("webUrl");
                 String publicationDate = article.getString("webPublicationDate");
                 JSONObject fields = article.optJSONObject("fields");
-                ;
                 String imageUrl = fields.getString("thumbnail");
+                JSONArray tags = article.getJSONArray("tags");
+                String authorName = "By: ";
+                if (tags.length() > 0) {
+                    JSONObject tagsFields = tags.getJSONObject(0);
+                    authorName = "By: " + tagsFields.optString("webTitle");
+                }
 
                 // Create a new {@link Article} object with the title, url, publicationDate, section
                 // and imageUrl from the JSON response.
-                articles.add(new Article(title, url, publicationDate, section, imageUrl));
+                articles.add(new Article(title, url, publicationDate, section, imageUrl, authorName));
 
                 //log msg just for checking
 //                Log.d(LOG_TAG, articles.get(i).toString());

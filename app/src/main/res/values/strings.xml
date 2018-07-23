@@ -4,6 +4,7 @@
     <string name="section_name">Section Name</string>
     <string name="news_title">News Title. Long placeholder location that should wrap to more than 2 lines of text</string>
     <string name="news_date">News date</string>
+    <string name="news_contributor">Name of the contributor</string>
 
     <!--Strings for the API to check if the section of the Ranked Article-->
     <string name="film">Film</string>
@@ -11,9 +12,9 @@
     <string name="culture">Culture</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
-    <string name="no_internet_connection">No internet connection.</string>
+    <string name="no_internet_connection">No internet connection found. Please check your WI-FI connection and try it again. </string>
 
     <!-- Error message when there is no ranked articles [CHAR LIMIT=NONE] -->
-    <string name="no_articles">No articles found.</string>
+    <string name="no_articles">Ranked is an entirely subjective countdown of a pop-cultural subject in the news of The Guardian. Unfortunate there are no articles found.  Please come back later and try again. </string>
 
 </resources>

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String apiKey = BuildConfig.ApiKey;
 
     // The static url of my HTTP request to The Guardian
-    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?&show-fields=thumbnail&page-size=20&api-key=" + apiKey;
+    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?&show-fields=thumbnail&show-tags=contributor&page-size=20&api-key=" + apiKey;
 
     // The id of the Loader
     private static final int ARTICLE_LOADER_ID = 1;

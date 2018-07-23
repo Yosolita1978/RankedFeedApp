@@ -33,7 +33,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View listItemView = convertView;
-        if (listItemView == null) {
+        if (convertView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_items, parent, false);
         }
 
@@ -44,6 +44,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         //Grabbing the section of the Article because I'll use that info for the image
         String articleSection = currentArticle.getSection();
         sectionTextView.setText(articleSection);
+
+        TextView authorTextView = listItemView.findViewById(R.id.contributor_name);
+        authorTextView.setText(currentArticle.getAuthorName());
 
         TextView titleTextView = listItemView.findViewById(R.id.news_title);
         titleTextView.setText(currentArticle.getTitle());
