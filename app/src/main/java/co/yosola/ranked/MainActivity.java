@@ -4,11 +4,16 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String apiKey = BuildConfig.ApiKey;
 
     // The static url of my HTTP request to The Guardian
-    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?&show-fields=thumbnail&show-tags=contributor&page-size=20&api-key=" + apiKey;
+    private static final String URL_REQUEST = "https://content.guardianapis.com/culture/series/ranked?";
 
     // The id of the Loader
     private static final int ARTICLE_LOADER_ID = 1;
@@ -104,8 +109,30 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
-        // Create a new loader for the given URL
-        return new ArticleLoader(this, URL_REQUEST);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String numArticlesToShow = sharedPrefs.getString(
+                getString(R.string.settings_num_shown_key),
+                getString(R.string.settings_num_shown_default));
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(URL_REQUEST);
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameter and its value. For example, the `show-tags=contributor`
+        uriBuilder.appendQueryParameter("show-fields", "thumbnail");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("page-size", numArticlesToShow);
+        uriBuilder.appendQueryParameter("api-key", apiKey);
+        //display Log.v with the uri created
+        Log.v("MainActivity", "uri= " + uriBuilder.toString());
+        // Return the completed uri
+        return new ArticleLoader(this, uriBuilder.toString());
+
     }
 
     @Override
@@ -131,6 +158,25 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(Loader<List<Article>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
+    }
+
+    @Override
+    // This method initialize the contents of the Activity's options menu.
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the Options Menu we specified in XML
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
