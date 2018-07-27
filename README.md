@@ -6,6 +6,9 @@
 The goal is to create a News Feed app which gives a user regularly-updated news from the internet related to a particular topic, person, or location. I choose to make an App about the Ranked Section on The Guardian.
 The app contains a main which displays multiple news stories about the ranked section
 The stories shown on the main screen update properly whenever new news data is fetched from The Guardian API by https://open-platform.theguardian.com/documentation/
+
+
+
 [Very Soon in my Dashboard in Android Google Play](https://play.google.com/store/apps/developer?id=yosola)
 
 
